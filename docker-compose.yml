@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ai-resume-agent:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - USER_FULL_NAME=${USER_FULL_NAME}
+      - USER_EMAIL=${USER_EMAIL}
+      - USER_PHONE=${USER_PHONE}
+      - USER_ADDRESS=${USER_ADDRESS}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
